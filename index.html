@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আপডেট প্রয়োজন</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- পেজের বেসিক স্টাইল --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            font-family: 'Hind Siliguri', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* --- মূল কন্টেইনার --- */
+        .container {
+            padding: 20px;
+            color: #f0f0f0;
+            max-width: 90%;
+            border-radius: 15px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* --- ক্যারেক্টার এর ছবি ও অ্যানিমেশন --- */
+        .character-container {
+            margin-bottom: 20px;
+        }
+        
+        .character {
+            width: 250px; /* ছবির সাইজ ছোট বা বড় করতে পারেন */
+            max-width: 60%;
+            /* Solo Leveling থিমের জন্য গ্লো বা আভা এফেক্ট */
+            filter: drop-shadow(0 0 15px rgba(74, 144, 226, 0.8)) drop-shadow(0 0 40px rgba(106, 17, 203, 0.6));
+            /* ভেসে থাকার অ্যানিমেশন */
+            animation: float 4s ease-in-out infinite, characterFadeIn 2.5s ease-out;
+        }
+
+        /* --- লেখা ও বাটন --- */
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(74, 144, 226, 0.7), 0 0 20px rgba(106, 17, 203, 0.5);
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #c0c0c0;
+            margin-bottom: 30px;
+        }
+
+        /* --- আপডেট ডাউনলোড বাটন --- */
+        .update-button {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            box-shadow: 0 5px 20px rgba(41, 128, 185, 0.5);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .update-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(106, 17, 203, 0.7);
+        }
+        
+        /* --- কীফ্রেম অ্যানিমেশন --- */
+        /* ভেসে থাকার জন্য */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* পুরো কন্টেইনার ভেসে ওঠার জন্য */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ক্যারেক্টার আসার জন্য */
+        @keyframes characterFadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- এখানে Solo Leveling ক্যারেক্টারের ছবি যুক্ত করা হয়েছে -->
+        <div class="character-container">
+            <img src="https://firebasestorage.googleapis.com/v0/b/viptask-5c1fc.appspot.com/o/dfdc00fc6bb93771364bbf5000dad222.jpg?alt=media&token=ff33f08b-1b2e-424e-b636-f664d8044bed" alt="Solo Leveling Character" class="character">
+        </div>
+
+        <div class="content">
+            <h1>অ্যাপটির নতুন আপডেট এসেছে!</h1>
+            <p>নতুন সব ফিচার উপভোগ করতে এবং অ্যাপের পারফরম্যান্স বাড়াতে এখনই আপডেট করুন।</p>
+            
+            <!-- ডাউনলোড বাটন, এখানে ক্লিক করলে URL এ যাবে -->
+            <a href="#" id="downloadButton" class="update-button">আপডেট ডাউনলোড করুন</a>
+        </div>
+    </div>
+
+    <script>
+        // --- জাভাস্ক্রিপ্ট কোড ---
+
+        // 🎯🎯🎯 শুধুমাত্র এই লাইনটিতে আপনার APK ফাইলের ডেমো বা আসল ডাউনলোড লিঙ্কটি বসিয়ে দিন
+        const downloadUrl = 'https://example.com/demo-update.apk'; 
+
+        // বাটনটি খুঁজে বের করা হচ্ছে
+        const downloadButton = document.getElementById('downloadButton');
+
+        // বাটনে ক্লিক করলে কি হবে তা নির্ধারণ করা হচ্ছে
+        downloadButton.addEventListener('click', function(event) {
+            event.preventDefault(); // পেজ যেন রিলোড না হয়
+            
+            // ব্যবহারকারীকে ডাউনলোড লিঙ্কে পাঠানো হচ্ছে
+            window.location.href = downloadUrl;
+        });
+    </script>
+
+</body>
+</html>
