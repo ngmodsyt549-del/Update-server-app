@@ -3,97 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আপডেট প্রয়োজন</title>
+    <title>নতুন আপডেট প্রয়োজন</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-glow-color: rgba(74, 144, 226, 0.6);
+            --secondary-glow-color: rgba(106, 17, 203, 0.7);
+            --background-start: #090a0f;
+            --background-end: #1b2735;
+        }
+
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            background: radial-gradient(ellipse at bottom, var(--background-end) 0%, var(--background-start) 100%);
             font-family: 'Hind Siliguri', sans-serif;
+            color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
         }
+
         .container {
-            padding: 20px;
-            color: #f0f0f0;
+            position: relative;
+            padding: 30px;
             max-width: 90%;
-            border-radius: 15px;
-            animation: fadeIn 2s ease-in-out;
+            width: 350px;
+            text-align: center;
+            border-radius: 20px;
+            background: rgba(27, 39, 53, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+
+        /* Twinkling Stars Background */
+        .stars, .twinkling {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .stars {
+            background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+            z-index: -3;
+        }
+
+        .twinkling {
+            background: transparent url(https://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+            z-index: -2;
+            animation: move-twink-back 200s linear infinite;
+        }
+
+        @keyframes move-twink-back {
+            from { background-position: 0 0; }
+            to { background-position: -10000px 5000px; }
+        }
+
         .logo-container {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            transform: translateZ(50px); /* 3D effect for logo */
         }
+
         .logo {
-            width: 150px; /* লোগোর সাইজ */
-            height: 150px;
-            border-radius: 50%; /* 🎯 লোগোকে গোলাকার করার জন্য এই কোড */
-            object-fit: cover; /* ছবির অনুপাত ঠিক রাখার জন্য */
-            border: 4px solid rgba(74, 144, 226, 0.4);
-            box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
-            animation: pulse 3s ease-in-out infinite;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-glow-color);
+            box-shadow: 0 0 25px var(--primary-glow-color), 0 0 50px var(--primary-glow-color);
+            animation: float 4s ease-in-out infinite, logo-glow 3s ease-in-out infinite alternate;
+            transition: transform 0.3s ease;
         }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
         h1 {
-            font-size: 2.2em;
+            font-size: 2em;
             font-weight: 700;
             color: #fff;
-            text-shadow: 0 0 10px rgba(74, 144, 226, 0.7);
-            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--primary-glow-color);
+            margin-bottom: 15px;
+            animation: slideInUp 1s ease-out;
         }
+
         p {
             font-size: 1.1em;
+            font-weight: 500;
             color: #c0c0c0;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            animation: slideInUp 1.2s ease-out;
         }
+
         .update-button {
             display: inline-block;
-            padding: 15px 35px;
+            padding: 14px 40px;
             border-radius: 50px;
             text-decoration: none;
             color: #ffffff;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 700;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            box-shadow: 0 5px 20px rgba(41, 128, 185, 0.5);
-            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 20px var(--secondary-glow-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1.4s ease-out;
         }
+
+        .update-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+        }
+
         .update-button:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(106, 17, 203, 0.7);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 35px var(--secondary-glow-color);
         }
+
+        .update-button:hover:before {
+            left: 100%;
+        }
+        
+        /* Keyframe Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 30px rgba(74, 144, 226, 0.6); }
-            50% { box-shadow: 0 0 50px rgba(106, 17, 203, 0.8); }
-            100% { box-shadow: 0 0 30px rgba(74, 144, 226, 0.6); }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes logo-glow {
+            from { box-shadow: 0 0 25px var(--primary-glow-color), 0 0 50px var(--primary-glow-color); }
+            to { box-shadow: 0 0 35px var(--secondary-glow-color), 0 0 60px var(--secondary-glow-color); }
+        }
+        
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
     <div class="container">
-        <!-- আপনার দেওয়া লোগোটি এখানে গোলাকার করে বসানো হয়েছে -->
         <div class="logo-container">
             <img src="https://firebasestorage.googleapis.com/v0/b/viptask-5c1fc.appspot.com/o/dfdc00fc6bb93771364bbf5000dad222.jpg?alt=media&token=ff33f08b-1b2e-424e-b636-f664d8044bed" alt="App Logo" class="logo">
         </div>
 
         <div class="content">
-            <h1>অ্যাপটির নতুন আপডেট এসেছে!</h1>
-            <p>নতুন সব ফিচার উপভোগ করতে এখনই অ্যাপটি আপডেট করুন।</p>
+            <h1>নতুন ভার্সন প্রস্তুত!</h1>
+            <p>আমাদের অ্যাপের লেটেস্ট সংস্করণ ডাউনলোড করে নতুন সব ফিচার ও উন্নত পারফরম্যান্স উপভোগ করুন।</p>
             
-            <!-- 🎯 বাটনে target="_blank" ব্যবহার করা হয়েছে -->
+            <!-- বাটনে ক্লিক করলে নতুন ট্যাবে ডাউনলোড লিঙ্ক খুলবে -->
             <a href="https://github.com/ngmodsyt549-del/Levelup-bd/raw/refs/heads/main/Level%20Up.apk" target="_blank" rel="noopener noreferrer" class="update-button">
-                আপডেট করুন
+                এখনি আপডেট করুন
             </a>
         </div>
     </div>
